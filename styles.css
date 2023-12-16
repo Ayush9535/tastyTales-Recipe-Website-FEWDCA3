@@ -9,6 +9,7 @@ body{
     font-family:'Kavoon', serif;
     letter-spacing: 1px;
     background-color: #171719;
+    scroll-behavior: smooth;
 }
 
 .flex-center{
@@ -136,8 +137,32 @@ hr{
 
 .search-results{
     margin-top: 3vw;
+    flex-direction: column;
 }
 
 .search-results h2{
     color: rgb(222, 220, 220);
+}
+
+#card-container{
+    margin-top: 5vw;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 2vw;
+}
+
+#dishImg{
+    width: 15vw;
+    margin-bottom: 1vw;
+}
+
+.card{
+    background-color: black;
+    /* border: 2px solid red; */
+    text-align: center;
+    padding: 2vw;
+}
+
+.card:hover{
+    box-shadow: 0 0 3px 3px #FF8A00;
 }
