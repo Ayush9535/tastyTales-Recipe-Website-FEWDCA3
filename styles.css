@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Kavoon&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family:'Kavoon', serif;
+    letter-spacing: 1px;
+}
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainPage{
+    background-image: url("./Assests/background.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    flex-direction: column;
+}
+
+.websiteName{
+    font-size: 6vw;
+    margin-top: 3vw;
+}
+
+.logo{
+    width: 6vw;
+    margin: 0 2vw;
+}
+
+.orange{
+    color: #FF8A00;
+}
+
+.aboutUs{
+    margin: 5vw;
+    font-size: 1vw;
+    width: 60vw;
+    color: rgb(222, 220, 220);
+}
+
+#search-bar{
+    width: 40vw;
+    height: 3vw;
+    padding: 1vw;
+    background-color: #3c3c3c;
+    border: none;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    outline: none;
+    border-radius : 0 7px 7px 0;
+    color: rgb(222, 220, 220);
+    font-size: 1vw;
+}
+
+.search-icon{
+    border: none;
+    /* width: 3vw; */
+    padding: 0.38vw;
+    background-color: #3c3c3c;
+    border-radius : 7px 0 0 7px;
+}
+
+.search-bar h2{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(222, 220, 220);
+    letter-spacing: 0.1vw;
+    font-size: 1vw;
+    margin-top: 1vw;
+}
+
+#Explore{
+    width: 10vw;
+    /* height: 2.5vw; */
+    margin: 4vw;
+    background-color: #FF8A00;
+    color: rgb(222, 220, 220);
+    border: none;
+    font-size: 1vw;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 1vw;
+    cursor: pointer;
+}
+
+#Explore:active{
+    transform: scale(0.9);
+}
