@@ -10,6 +10,7 @@ body{
     letter-spacing: 1px;
     background-color: #171719;
     scroll-behavior: smooth;
+    position: relative;
 }
 
 .flex-center{
@@ -22,7 +23,7 @@ body{
     background-image: url("./Assests/background.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    width: 100vw;
+    width: 99vw;
     height: 100vh;
     text-align: center;
     flex-direction: column;
@@ -165,4 +166,53 @@ hr{
 
 .card:hover{
     box-shadow: 0 0 3px 3px #FF8A00;
+}
+
+#popup{
+    position: absolute;
+    background-color: black;
+    width: 500px;
+    height: 548.612px;
+    text-align: center;
+    overflow: auto; 
+    text-wrap: wrap;
+    padding: 2vw 4.5vw;
+    left: 33vw;
+    top: 5vw;
+    box-shadow: 0 0 0 1000px #00000080;
+    border-radius: 10px;
+    position: fixed;
+    display: none;
+    color: white;
+}
+
+#popup img{
+    width: 2.5vw;
+    position: relative;
+    left: 120px;
+    cursor: pointer;    
+}
+
+hr{
+    margin-top: 20px;
+}
+
+#dishName{
+    /* margin-bottom: 1vw; */
+    color: orange;
+}
+
+ol{
+    padding: 1vw 2vw;
+    text-align: left;
+    line-height: 23px;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #FF8A00;
+    border-radius: 5px;
 }
