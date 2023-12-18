@@ -157,6 +157,10 @@ hr{
     margin-bottom: 1vw;
 }
 
+#dishName{
+    cursor: pointer;
+}
+
 .card{
     background-color: black;
     /* border: 2px solid red; */
@@ -172,7 +176,7 @@ hr{
     position: absolute;
     background-color: black;
     width: 500px;
-    height: 548.612px;
+    /* height: 548.612px; */
     text-align: center;
     overflow: auto; 
     text-wrap: wrap;
@@ -184,6 +188,7 @@ hr{
     position: fixed;
     display: none;
     color: white;
+    border: 2px solid #FF8A00;
 }
 
 #popup img{

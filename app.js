@@ -8,6 +8,7 @@ const resultsFor = document.getElementById("resultsfor")
 const explore = document.getElementById("Explore")
 const viewIngre = document.getElementById("viewIngredient")
 let id;
+let idArray = []
 
 explore.onclick =()=>{
     window.scroll({
@@ -39,6 +40,7 @@ async function getSearchedCategory(category) {
                 console.log(data.meals)
                 cardContainer.innerHTML = "" 
                 data.meals.forEach((dish)=>{
+                    idArray.push(dish.idMeal)
                     let newDish = 
                     `<div class="card">
                         <img src="${dish.strMealThumb}" id="dishImg">
@@ -46,11 +48,15 @@ async function getSearchedCategory(category) {
                     </div>`
                     cardContainer.innerHTML += newDish 
                 })
-                document.querySelectorAll(".card").forEach((ele)=>{
-                    console.log(ele)
+                console.log(idArray)
+                document.querySelectorAll("#dishName").forEach((ele , i)=>{
+                    // console.log(ele)
                     ele.addEventListener("click" , (e)=>{
-                        console.log(e.target.parentElement)
-                        e.stopPropagation()
+                        console.log(e.target.innerHTML)
+                        console.log(idArray[i])
+                        getIngredients(idArray[i])
+                        popup.style.display = "block"
+                        // e.stopPropagation()
                     })
                 })
     } catch (err) {
@@ -62,18 +68,19 @@ const popup = document.getElementById("popup")
 const ingredientlist = document.getElementById("ingredient-list")
 const closePopup = document.getElementById("closePopup")
 
-async function getIngredients(id) {
+async function getIngredients(param) {
+    ingredientlist.innerHTML = ""
     try {
-            let response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
-                let data = await response.json()
-                for (let i=1 ; i<21 ; i++){
-                    if (data.meals[0][`strIngredient${i}`] !== ""){
-                        console.log(data.meals[0][`strIngredient${i}`])
-                        let a = data.meals[0][`strIngredient${i}`]
-                        ingredientlist.innerHTML += `<li>${a}</li>`
-                    }
-                }
-                
+        let response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${param}`)
+        let data = await response.json()
+        for (let i=1 ; i<21 ; i++){
+            if (data.meals[0][`strIngredient${i}`] !== ""){
+                console.log(data.meals[0][`strIngredient${i}`])
+                let a = data.meals[0][`strIngredient${i}`]
+                ingredientlist.innerHTML += `<li>${a}</li>`
+            }
+        }
+        
     } catch (err) {
         console.error("Error fetching data:", err);
     }
@@ -83,13 +90,13 @@ searchBar.addEventListener("keypress" , (e)=>{
     if (e.key == "Enter"){
         resultsFor.innerHTML = searchBar.value
         getSearchedCategory(searchBar.value)
+        searchBar.value = ""
         window.scroll({top:1300 , behavior:"smooth"})
     }
 })
 
 viewIngre.onclick = () =>{
     console.log(id)
-    ingredientlist.innerHTML = ""
     getIngredients(id)
     popup.style.display = "block"
     
