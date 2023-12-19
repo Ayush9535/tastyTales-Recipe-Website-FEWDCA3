@@ -237,20 +237,23 @@ ol{
     #card-container{
         grid-template-columns: auto auto auto;
     }
+    .mainPage{
+        height: 75vh;
+    }
 }
 
 @media all and (min-width:300px) and (max-width:500px){
     #card-container{
         grid-template-columns: auto auto;
     }
+    .mainPage{
+        height: 60vh;
+    }
 }
 
 @media all and (min-width:300px) and (max-width:700px) {
     .websiteName{
         font-size: 9vw;
-    }
-    .mainPage{
-        height: 75vh;
     }
     .aboutUs{
         font-size: 2vw;
