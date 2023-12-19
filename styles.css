@@ -31,7 +31,7 @@ body{
 
 .websiteName{
     font-size: 6vw;
-    margin-top: 3vw;
+    margin-top: 9vw;    
 }
 
 .logo{
@@ -63,7 +63,7 @@ body{
     font-size: 1vw;
 }
 
-.search-icon{
+.search-icon{   
     border: none;
     width: 3vw;
     padding: 0.7vw;
@@ -129,6 +129,10 @@ body{
     margin: 2vw 0;
 }
 
+#randomName{
+    font-size: 3vw;
+}
+
 hr{
     margin-top: 3vw;
     background-color: #FF8A00;
@@ -143,6 +147,9 @@ hr{
 
 .search-results h2{
     color: rgb(222, 220, 220);
+}
+#notfound{
+    color: #3c3c3c;
 }
 
 #card-container{
@@ -175,7 +182,7 @@ hr{
 #popup{
     position: absolute;
     background-color: black;
-    width: 500px;
+    width: 35vw;
     /* height: 548.612px; */
     text-align: center;
     overflow: auto; 
@@ -194,7 +201,7 @@ hr{
 #popup img{
     width: 2.5vw;
     position: relative;
-    left: 120px;
+    left: 7.5vw;
     cursor: pointer;    
 }
 
@@ -221,3 +228,98 @@ ol{
     background-color: #FF8A00;
     border-radius: 5px;
 }
+
+.search-results{
+    font-size: 1.5vw;
+}
+
+@media all and (min-width:500px) and (max-width:700px){
+    #card-container{
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media all and (min-width:300px) and (max-width:500px){
+    #card-container{
+        grid-template-columns: auto auto;
+    }
+}
+
+@media all and (min-width:300px) and (max-width:700px) {
+    .websiteName{
+        font-size: 9vw;
+    }
+    .mainPage{
+        height: 75vh;
+    }
+    .aboutUs{
+        font-size: 2vw;
+    }
+    #search-bar{
+        width: 47vw;
+        height: 5vw;
+        font-size: 2vw;
+    }
+    .search-icon{
+        width: 5vw;
+    }
+    .search-bar h2{
+        font-size: 1.5vw;
+    }
+    #Explore{
+        margin-top: 8vw;
+        font-size: 2vw;
+        width: 18vw;
+        padding: 2vw;
+    }
+
+    #viewIngredient{
+        width: 15vw;
+        font-size: 2vw;
+        margin-top: 4vw;
+    }
+
+    .todayspecial h2{
+        font-size: 4vw;
+    }
+    .search-results{
+        font-size: 3vw;
+    }
+    
+    .content{
+        margin: 4vw 4vw 3vw 4vw;
+        width: 100%;
+        gap: 10vw;
+        text-align: center;
+    }
+    
+    #randomMeal{
+        width: 25vw;
+        border-radius: 10px;
+    }
+    
+    .randomMealinfo div{
+        margin: 2vw 0;
+        font-size: 2vw;
+    }
+    
+    #randomName{
+        font-size: 3vw;
+    }
+
+    #popup{
+        width: 60vw;
+        font-size: 3vw;
+        top: 50vw;
+        left: 21vw;
+        height: 50vh;
+    }
+    #popup img{
+        width: 5vw;
+    }
+    ::-webkit-scrollbar{
+        width: 6px;
+    }
+    
+}
+

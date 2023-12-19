@@ -35,32 +35,32 @@ getRandomMeal()
 
 async function getSearchedCategory(category) {
     try {
-            let response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
-                let data = await response.json()
-                console.log(data.meals)
-                cardContainer.innerHTML = "" 
-                data.meals.forEach((dish)=>{
-                    idArray.push(dish.idMeal)
-                    let newDish = 
-                    `<div class="card">
-                        <img src="${dish.strMealThumb}" id="dishImg">
-                        <h2 id="dishName">${dish.strMeal}</h2>
-                    </div>`
-                    cardContainer.innerHTML += newDish 
+        document.getElementById("notfound").style.display = "none"
+        let response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
+            let data = await response.json()
+            console.log(data.meals)
+            cardContainer.innerHTML = "" 
+            data.meals.forEach((dish)=>{
+                idArray.push(dish.idMeal)
+                let newDish = 
+                `<div class="card">
+                    <img src="${dish.strMealThumb}" id="dishImg">
+                    <h2 id="dishName">${dish.strMeal}</h2>
+                </div>`
+                cardContainer.innerHTML += newDish 
+            })
+            console.log(idArray)
+            document.querySelectorAll("#dishName").forEach((ele , i)=>{
+                ele.addEventListener("click" , (e)=>{
+                    console.log(e.target.innerHTML)
+                    console.log(idArray[i])
+                    getIngredients(idArray[i])
+                    popup.style.display = "block"
                 })
-                console.log(idArray)
-                document.querySelectorAll("#dishName").forEach((ele , i)=>{
-                    // console.log(ele)
-                    ele.addEventListener("click" , (e)=>{
-                        console.log(e.target.innerHTML)
-                        console.log(idArray[i])
-                        getIngredients(idArray[i])
-                        popup.style.display = "block"
-                        // e.stopPropagation()
-                    })
-                })
+            })
     } catch (err) {
-        console.error("Error fetching data:", err);
+        console.log("No results Found")
+        document.getElementById("notfound").style.display = "block"
     }
 }
 
