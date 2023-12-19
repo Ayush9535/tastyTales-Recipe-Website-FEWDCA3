@@ -1,3 +1,4 @@
+// Getting all Required Html Elements 
 const randomMealImg = document.getElementById("randomMeal")
 const randomName = document.getElementById("randomName")
 const randomCategory = document.getElementById("randomcategory")
@@ -7,21 +8,30 @@ const searchBar = document.getElementById("search-bar")
 const resultsFor = document.getElementById("resultsfor")
 const explore = document.getElementById("Explore")
 const viewIngre = document.getElementById("viewIngredient")
+const popup = document.getElementById("popup")
+const ingredientlist = document.getElementById("ingredient-list")
+const closePopup = document.getElementById("closePopup")
+
+// This is made to keep track of id of meal to show ingredients 
 let id;
 let idArray = []
 
+// Explore button functional
 explore.onclick =()=>{
     window.scroll({
         top:756 , behavior:"smooth"
     })
 }
 
+// function to fetch random meal info 
 async function getRandomMeal() {
     try {
             let response = await fetch("https://www.themealdb.com/api/json/v1/1/random.php")
                 let data = await response.json()
                 console.log(data.meals)
                 id = data.meals[0].idMeal
+
+                // updating the random meal in html 
                 randomMealImg.src = data.meals[0].strMealThumb
                 randomName.innerHTML = data.meals[0].strMeal
                 randomCategory.innerHTML = data.meals[0].strCategory
@@ -33,12 +43,15 @@ async function getRandomMeal() {
 }
 getRandomMeal()
 
+// function to fetch information of searched category 
 async function getSearchedCategory(category) {
     try {
         document.getElementById("notfound").style.display = "none"
         let response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
             let data = await response.json()
             console.log(data.meals)
+
+            // adding dish cards to html 
             cardContainer.innerHTML = "" 
             data.meals.forEach((dish)=>{
                 idArray.push(dish.idMeal)
@@ -49,6 +62,8 @@ async function getSearchedCategory(category) {
                 </div>`
                 cardContainer.innerHTML += newDish 
             })
+
+            // adding eventlistners to dish names so as to show their ingredients 
             console.log(idArray)
             document.querySelectorAll("#dishName").forEach((ele , i)=>{
                 ele.addEventListener("click" , (e)=>{
@@ -64,15 +79,14 @@ async function getSearchedCategory(category) {
     }
 }
 
-const popup = document.getElementById("popup")
-const ingredientlist = document.getElementById("ingredient-list")
-const closePopup = document.getElementById("closePopup")
-
+// function to fetch ingredients of any meal 
 async function getIngredients(param) {
     ingredientlist.innerHTML = ""
     try {
         let response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${param}`)
         let data = await response.json()
+
+        // adding ingredients to popup
         for (let i=1 ; i<21 ; i++){
             if (data.meals[0][`strIngredient${i}`] !== ""){
                 console.log(data.meals[0][`strIngredient${i}`])
@@ -86,6 +100,7 @@ async function getIngredients(param) {
     }
 }
 
+// makeing input functional 
 searchBar.addEventListener("keypress" , (e)=>{
     if (e.key == "Enter"){
         resultsFor.innerHTML = searchBar.value
@@ -95,6 +110,7 @@ searchBar.addEventListener("keypress" , (e)=>{
     }
 })
 
+// viewingredients button functional
 viewIngre.onclick = () =>{
     console.log(id)
     getIngredients(id)
@@ -102,6 +118,7 @@ viewIngre.onclick = () =>{
     
 }
 
+// making popup close button functional
 closePopup.addEventListener("click" , ()=>{
     popup.style.display = "none"
 })
